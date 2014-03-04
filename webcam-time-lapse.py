@@ -9,12 +9,13 @@ cap.set(3, 1296.0)
 print str(cap.get(3)),str(cap.get(4))
 
 ret, frame = cap.read()
-
+count = 0
 while(1):
     ret, frame = cap.read()
-    cv2.imshow('frame.jpg', frame)
-    cv2.imwrite('frame.jpg', frame)
+    frame_num = "%08d" % (count,)
+    cv2.imwrite('frames/' + frame_num + '.jpg', frame)
     k = cv2.waitKey(1)
+    count = count + 1
 
 cv2.destroyAllWindows()
 cap.release()
